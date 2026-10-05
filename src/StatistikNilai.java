@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class StatistikNilai {
@@ -97,5 +98,11 @@ public class StatistikNilai {
             System.out.print(huruf[i] + "=" + jumlahGrade[i] + " ");
         }
         System.out.println();
+
+        // Daftar terurut dibuat dari SALINAN, supaya daftar asli tidak ikut terurut
+        ArrayList<Integer> terurut = new ArrayList<>(daftar);
+        Collections.sort(terurut);
+        System.out.println("Terurut         : " + terurut);
+        System.out.println("Urutan asli     : " + daftar);
     }
 }
