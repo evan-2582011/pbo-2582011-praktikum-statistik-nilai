@@ -63,5 +63,39 @@ public class StatistikNilai {
         System.out.println("Rata-rata       : " + String.format("%.2f", rataRata));
         System.out.println("Tertinggi       : " + tertinggi);
         System.out.println("Terendah        : " + terendah);
+
+        // Jumlah di atas rata-rata dihitung di PUTARAN KEDUA. Tidak bisa dihitung
+        // sambil membaca nilai (putaran pertama), karena saat nilai pertama dibaca,
+        // rata-ratanya belum diketahui. Rata-rata baru ada setelah semua nilai
+        // terkumpul, jadi daftar harus dilewati sekali lagi.
+        int diAtasRataRata = 0;
+        for (int n : daftar) {
+            if (n > rataRata) {
+                diAtasRataRata++;
+            }
+        }
+        System.out.println("Di atas rata2   : " + diAtasRataRata + " orang");
+
+        // Distribusi grade: index 0=A, 1=B, 2=C, 3=D, 4=E
+        int[] jumlahGrade = new int[5];
+        for (int n : daftar) {
+            if (n >= 90) {
+                jumlahGrade[0]++;
+            } else if (n >= 80) {
+                jumlahGrade[1]++;
+            } else if (n >= 70) {
+                jumlahGrade[2]++;
+            } else if (n >= 60) {
+                jumlahGrade[3]++;
+            } else {
+                jumlahGrade[4]++;
+            }
+        }
+        String[] huruf = {"A", "B", "C", "D", "E"};
+        System.out.print("Distribusi      : ");
+        for (int i = 0; i < jumlahGrade.length; i++) {
+            System.out.print(huruf[i] + "=" + jumlahGrade[i] + " ");
+        }
+        System.out.println();
     }
 }
